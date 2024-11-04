@@ -1,0 +1,78 @@
+<div class="container-fluid my-4">
+  <div class="row h-100">
+    <!-- Menú de navegación -->
+    <nav class="col-md-3 col-lg-2 bg-dark text-light p-4">
+      <h4 class="mb-4 text-success">Panel de Gestión</h4>
+      <div class="list-group h-100">
+        <button routerLink="/cursos" class="list-group-item list-group-item-action text-success">Cursos</button>
+        <button routerLink="/docentes" class="list-group-item list-group-item-action active text-success">Docentes</button>
+        <button routerLink="/alumnos" class="list-group-item list-group-item-action text-success">Alumnos</button>
+        <button routerLink="/temas" class="list-group-item list-group-item-action text-success">Temas</button>
+      </div>
+    </nav>
+
+    <div class="col-md-9 col-lg-10">
+      <div class="row h-100">
+        <div class="col-md-6">
+          <div class="card shadow-sm p-4 mb-4 bg-white">
+            <h5 class="card-title text-center mb-4">{{ editing ? 'Actualizar Docente' : 'Crear Nuevo Docente' }}</h5>
+            <form [formGroup]="docenteForm" (ngSubmit)="onSubmit()">
+              <div class="form-group mb-3">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input id="nombre" formControlName="nombre" type="text" class="form-control" required placeholder="Ingrese el nombre" />
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="legajo" class="form-label">Legajo:</label>
+                <input id="legajo" formControlName="legajo" type="number" class="form-control" required placeholder="Ingrese el legajo" />
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-success">{{ editing ? 'Actualizar' : 'Crear' }} Docente</button>
+                <button type="button" class="btn btn-secondary" *ngIf="editing" (click)="resetForm()">Cancelar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card shadow-sm p-3 mb-4 bg-white">
+            <h5 class="card-title text-center text-primary">Lista de Docentes</h5>
+            <div class="form-inline my-3 d-flex justify-content-center">
+              <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar por nombre..." class="form-control w-75" />
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Legajo</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let docente of getFilteredDocentes()">
+                    <td>{{ docente.id }}</td>
+                    <td>{{ docente.nombre }}</td>
+                    <td>{{ docente.legajo }}</td>
+                    <td class="d-flex justify-content-around">
+                      <button class="btn btn-warning btn-sm" (click)="editDocente(docente)">Editar</button>
+                      <button class="btn btn-danger btn-sm" (click)="deleteDocente(docente.id)">Eliminar</button>
+                      <button class="btn btn-info btn-sm" [routerLink]="['/docentes', docente.id, 'detalles']">Ver Detalles</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div *ngIf="getFilteredDocentes().length === 0" class="alert alert-warning text-center mt-3">
+              No hay docentes disponibles.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

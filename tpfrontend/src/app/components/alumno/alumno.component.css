@@ -1,0 +1,89 @@
+input[type="text"],
+input[type="date"] {
+    max-width: 300px; /* Ajusta el ancho máximo deseado */
+    width: 100%; /* Asegura que el campo ocupe todo el ancho disponible hasta el máximo */
+}
+body {
+    background-image: url('../../../assets/fondo.jpg');
+    background-size: cover; /* La imagen cubrirá toda la pantalla */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen */
+  }
+button {
+    background-color: #e7eaec;
+    color: rgb(28, 209, 43);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #e3e7e0;
+    cursor: pointer;
+  }
+  
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+  }
+  .container {
+    background-color: #f8f9fa; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .container h2 {
+    color: #d31515;
+    margin-bottom: 15px;
+  }
+  .list-group-item { /* este es para los bordes de los botones*/
+    background-color: #ffffff;
+    border: 1px solid #ff00ea;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .list-group-item:hover {
+    transform: translateY(-3px);
+    background-color: #e7f3ff;
+  }
+  .alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  form {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  input, select, textarea {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  input:focus, select:focus, textarea:focus {
+    border-color: #c2c525;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
